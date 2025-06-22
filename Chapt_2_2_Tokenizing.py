@@ -1,12 +1,13 @@
 ## Block 1
 import urllib.request
-from SimpleTokenizer import SimpleTokenizerV1
+import tiktoken
+from SimpleTokenizer import SimpleTokenizerV2
 
-url = ("https://raw.githubusercontent.com/rasbt/"
-       "LLMs-from-scratch/main/ch02/01_main-chapter-code/"
-       "the-verdict.txt")
-file_path = "the-verdict.txt"
-urllib.request.urlretrieve(url, file_path)
+# url = ("https://raw.githubusercontent.com/rasbt/"
+#        "LLMs-from-scratch/main/ch02/01_main-chapter-code/"
+#        "the-verdict.txt")
+# file_path = "the-verdict.txt"
+# urllib.request.urlretrieve(url, file_path)
 
 with open("the-verdict.txt", "r", encoding="utf-8") as f:
     raw_text = f.read()
@@ -32,9 +33,12 @@ for i, item in enumerate(vocab.items()):
     if i >= 50:
         break
 
-tokenizer = SimpleTokenizerV1(vocab)
+tokenizer = SimpleTokenizerV2(vocab)
 text = """It's the last he painted, you know,"
     Mrs. Gisburn said with pardonable pride."""
 ids = tokenizer.encode(text)
 print(ids)
 print(tokenizer.decode(ids))
+
+# Block 5
+tokenizer
